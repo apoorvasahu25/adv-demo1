@@ -21,7 +21,7 @@ pipeline
         {
             steps
             {
-                sh 'docker login -u ashjd -p ashjd@1122000'
+                sh 'docker login -u ashjd -p dckr_pat_Bd34xMJ2z1I24rgENk3kqOV3mDo'
             }
         }
         stage('Push image to Hub')
