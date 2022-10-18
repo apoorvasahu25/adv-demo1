@@ -17,9 +17,7 @@ pipeline {
             }
         }
     }
-    stages
-    {
-        stage('Build Docker Image')
+    stage('Build Docker Image')
         {
            steps
            {
@@ -68,4 +66,3 @@ pipeline {
             }
         }
     }
-}
