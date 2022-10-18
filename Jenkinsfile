@@ -22,7 +22,7 @@ pipeline
             {
                script
                {
-                   sh 'docker login -u $crides_USR -p $crides_PSW'
+                   
                    sh 'docker push ashjd/ashu-jenkins1'
                }
             }          
