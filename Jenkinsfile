@@ -17,7 +17,7 @@ pipeline
                 }
             }
         }
-        stage(dcoekr login)
+        stage('docker login')
         {
             steps
             {
