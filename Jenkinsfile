@@ -22,7 +22,7 @@ pipeline
             {
                script
                {
-                   sh 'docker login -u crides_USR -p crides_PSW'
+                   sh "docker login -u $crides_USR -p $crides_PSW"
                    sh 'docker push ashjd/ashu-jenkins1'
                }
             }          
@@ -33,7 +33,7 @@ pipeline
             {
                 script
                 {
-                    sh 'docker login -u ashjd -p ashjd@1122000'
+     
                     sh 'docker pull ashjd/ashu-jenkins1'
                 }
             }
