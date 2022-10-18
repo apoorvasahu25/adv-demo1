@@ -1,6 +1,9 @@
 pipeline 
 {
     agent any
+    environment {     
+        a=credentials('Jenkins-docker-login')     
+} 
     stages
     {
         stage('Build Docker Image')
@@ -17,7 +20,8 @@ pipeline
         {
             steps
             {
-                sh 'docker login -u ashjd -p dckr_pat_Bd34xMJ2z1I24rgENk3kqOV3mDo'
+                
+                sh 'docker login -u a_USR -p a_PSW'
             }
         }
         stage('Push image to Hub')
