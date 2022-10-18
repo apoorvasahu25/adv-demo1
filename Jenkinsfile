@@ -1,9 +1,7 @@
 pipeline 
 {
     agent any
-    environment{
-        crides=credentials('a16fb47f-e48c-409e-baf7-c1c8e3ffcf6e')
-    }
+    
     stages
     {
         stage('Build Docker Image')
