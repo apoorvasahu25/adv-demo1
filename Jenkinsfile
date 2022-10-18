@@ -1,23 +1,22 @@
-pipeline {
+pipeline 
+{
     agent any
-    stages {
-        stage('only') {
-            steps {
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'docker-login', 
-                        usernameVariable: 'ashjd', 
-                        passwordVariable: 'dckr_pat_Bd34xMJ2z1I24rgENk3kqOV3mDo'
-                        )]) {
+    stages
+    {
+        stage('credes')
+        {
+            steps 
+            {
+                withCredentials([usernamePassword(credentialsId: 'docker-login', usernameVariable: 'ashjd', passwordVariable: 'dckr_pat_Bd34xMJ2z1I24rgENk3kqOV3mDo')]) 
+                {
                     sh '''
                         echo "The username is: ${ashjd}"
                         echo "The password is : ${dckr_pat_Bd34xMJ2z1I24rgENk3kqOV3mDo}"
                     '''
                 }
-            }
+            }            
         }
-    }
-    stage('Build Docker Image')
+        stage('Build Docker Image')
         {
            steps
            {
@@ -27,13 +26,12 @@ pipeline {
                 }
             }
         }
-         stage('docker login1')
+        stage('docker login')
         {
             steps
-            {     
-                sh 'docker login -u $secret_USR -p $secret_PSW'
-                sh 'echo $secret_PSW | docker login -u $secret_USR --password-stdin'
-             }
+            {   
+                sh 'docker login -u ashjd -p dckr_pat_Bd34xMJ2z1I24rgENk3kqOV3mDo'         
+            }
         }
         stage('Push image to Hub')
         {
@@ -66,3 +64,4 @@ pipeline {
             }
         }
     }
+}
