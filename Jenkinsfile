@@ -1,8 +1,8 @@
 pipeline 
 {
     agent any
-    environment{
-        crides=credentials("a16fb47f-e48c-409e-baf7-c1c8e3ffcf6e")
+    environment {
+        crides = credentials( 'a16fb47f-e48c-409e-baf7-c1c8e3ffcf6e' )
     }    
     stages
     {
@@ -22,7 +22,7 @@ pipeline
             {
                script
                {
-                   sh "docker login -u $crides_USR -p $crides_PSW"
+                   sh 'docker login -u $crides_USR -p $crides_PSW'
                    sh 'docker push ashjd/ashu-jenkins1'
                }
             }          
