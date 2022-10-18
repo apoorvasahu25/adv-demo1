@@ -29,7 +29,7 @@ pipeline
         }
         stage('Giving tag')
         {
-            sreps
+            steps
             {
                 sh 'docekr tag gcc ashjd/ashu-jenkins1:gcc'
             }
