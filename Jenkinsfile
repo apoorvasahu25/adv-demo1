@@ -21,11 +21,11 @@ pipeline
         {
             steps
             {
-               script
-               {
+              
+               
                    sh 'echo $a_PSW | docker login -u $a_USR --password-stdin'
                    sh 'docker push ashjd/ashu-jenkins1'
-               }
+               
             }          
         }
         stage('Pull image from hub')
