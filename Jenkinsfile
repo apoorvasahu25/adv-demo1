@@ -7,7 +7,7 @@ pipeline
         {
             steps 
             {
-                withCredentials([usernamePassword(credentialsId: 'docker-login', usernameVariable: 'ashjd', passwordVariable: 'dckr_pat_Bd34xMJ2z1I24rgENk3kqOV3mDo')]) 
+                withCredentials([usernamePassword(credentialsId: 'docker-login', usernameVariable: 'ashjd', passwordVariable: 'ashjd@1122000')]) 
                 {
                     sh '''
                         echo "The username is: ${ashjd}"
