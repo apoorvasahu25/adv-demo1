@@ -17,15 +17,18 @@ pipeline
                 }
             }
         }
-        stage('Push image to Hub')
+        stage(dcoekr login)
         {
             steps
             {
-              
-               
-                   sh 'echo $a_PSW | docker login -u $a_USR --password-stdin'
-                   sh 'docker push ashjd/ashu-jenkins1'
-               
+                sh 'docker login -u ashjd -p ashjd@1122000'
+            }
+        }
+        stage('Push image to Hub')
+        {
+            steps
+            {     
+                sh 'docker push ashjd/ashu-jenkins1'
             }          
         }
         stage('Pull image from hub')
@@ -39,6 +42,7 @@ pipeline
                 }
             }
         }
+        
         stage('start container')
         {
             steps
