@@ -2,7 +2,7 @@ pipeline
 {
     agent any
     environment {     
-        secret=credentials('Jenkins-docker-login')     
+        secret=credentials('docker-login')     
 } 
     stages
     {
@@ -20,11 +20,17 @@ pipeline
         {
             steps
             {             
-                sh "echo $secret | docker login -u ashjd --password-stdin"
-                sh "docker login -u ashjd -p $secret"
-                sh 'echo $secret | docker login -u ashjd --password-stdin'
-                sh 'docker login -u ashjd -p $secret'
+                sh 'echo $secret_PSW | docker login -u $secret_USR --password-stdin'
+                sh 'docker login -u $secret_USR -p $secret_PSW'
             }
+        }
+         stage('docker login1')
+        {
+            steps
+            {             
+                sh "echo $secret_PSW | docker login -u $secret_USR --password-stdin"
+                sh "docker login -u $secret_USR -p $secret_PSW"
+             }
         }
         stage('Push image to Hub')
         {
