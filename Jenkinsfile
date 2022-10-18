@@ -2,7 +2,7 @@ pipeline
 {
     agent any
     environment {
-        credes=credentials( 'Jenkins-docker-login' )
+        a=credentials( 'Jenkins-docker-login' )
         
     }    
     stages
@@ -23,7 +23,7 @@ pipeline
             {
                script
                {
-                   sh 'echo $credes_PSW | docekr login -u $credes_USR --password-stdin'
+                   sh 'echo $a_PSW | docekr login -u $a_USR --password-stdin'
                    sh 'docker push ashjd/ashu-jenkins1'
                }
             }          
