@@ -19,17 +19,18 @@ pipeline
         stage('docker login')
         {
             steps
-            {             
-                sh 'echo $secret_PSW | docker login -u $secret_USR --password-stdin'
-                sh 'docker login -u $secret_USR -p $secret_PSW'
+            {   
+                sh "echo $secret_PSW | docker login -u $secret_USR --password-stdin"
+                sh "docker login -u $secret_USR -p $secret_PSW"         
+               
             }
         }
          stage('docker login1')
         {
             steps
             {             
-                sh "echo $secret_PSW | docker login -u $secret_USR --password-stdin"
-                sh "docker login -u $secret_USR -p $secret_PSW"
+                sh 'echo $secret_PSW | docker login -u $secret_USR --password-stdin'
+                sh 'docker login -u $secret_USR -p $secret_PSW'
              }
         }
         stage('Push image to Hub')
