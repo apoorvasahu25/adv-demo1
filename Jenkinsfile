@@ -19,9 +19,8 @@ pipeline
         stage('docker login')
         {
             steps
-            {
-                
-                sh 'docker login -u a_USR -p a_PSW'
+            {             
+                sh 'echo $a_PSW | docker login -u $a_USR --password-stdin'
             }
         }
         stage('Push image to Hub')
