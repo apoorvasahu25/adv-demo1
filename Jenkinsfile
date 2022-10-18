@@ -10,11 +10,18 @@ pipeline
                 sh 'docker build -t gcc .'
            }
         }
-        stage('start container')
+        stage('Run container')
         {
             steps
             {
                 sh 'docker run gcc'
+            }
+        }
+        stage('Giving tag')
+        {
+            steps
+            {
+                sh 'docker tag gcc ashjd/ashu-jenkins1:gcc'
             }
         }
         stage('Docker login')
@@ -26,13 +33,6 @@ pipeline
                     sh 'docker login -u ${ashUSR} -p ${ashPSW}'         
                 }
             }   
-        }
-        stage('Giving tag')
-        {
-            steps
-            {
-                sh 'docker tag gcc ashjd/ashu-jenkins1:gcc'
-            }
         }
         stage('Push image to DockerHub')
         {
@@ -46,14 +46,6 @@ pipeline
             steps
             {     
                 sh 'docker pull ashjd/ashu-jenkins1:gcc'
-            }
-        }
-        
-        stage('Remove container')
-        {
-            steps
-            {
-                sh 'docker rm gcc'
             }
         }
     }
