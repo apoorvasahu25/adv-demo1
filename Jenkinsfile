@@ -1,6 +1,9 @@
 pipeline 
 {
     agent any
+    environment{
+        crides=cridentials('a16fb47f-e48c-409e-baf7-c1c8e3ffcf6e')
+    }
     stages
     {
         stage('Build Docker Image')
@@ -19,7 +22,7 @@ pipeline
             {
                script
                {
-                   sh 'docker login -u ashjd -p ashjd@1122000'
+                   sh 'docker login -u crides_USR -p crides_PSW'
                    sh 'docker push ashjd/ashu-jenkins1'
                }
             }          
