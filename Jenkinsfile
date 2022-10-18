@@ -2,7 +2,7 @@ pipeline
 {
     agent any
     environment{
-        crides=cridentials('a16fb47f-e48c-409e-baf7-c1c8e3ffcf6e')
+        crides=credentials('a16fb47f-e48c-409e-baf7-c1c8e3ffcf6e')
     }
     stages
     {
