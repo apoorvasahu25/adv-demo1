@@ -1,10 +1,26 @@
 pipeline 
 {
     agent any
-    environment 
-        {     
-            secret=credentials('docker-login')     
-        }   
+    pipeline {
+    agent any
+    stages {
+        stage('only') {
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'docker-login', 
+                        usernameVariable: 'ashjd', 
+                        passwordVariable: 'dckr_pat_Bd34xMJ2z1I24rgENk3kqOV3mDo'
+                        )]) {
+                    sh '''
+                        echo "The username is: ${ashjd}"
+                        echo "The password is : ${dckr_pat_Bd34xMJ2z1I24rgENk3kqOV3mDo}"
+                    '''
+                }
+            }
+        }
+    }
+}
     stages
     {
         stage('Build Docker Image')
@@ -15,15 +31,6 @@ pipeline
                 {
                     sh 'docker build -t ashjd/ashu-jenkins1 .'
                 }
-            }
-        }
-        stage('docker login')
-        {
-        steps
-            {   
-                sh "docker login -u $secret_USR -p $secret_PSW"         
-                sh "echo $secret_PSW | docker login -u $secret_USR --password-stdin"
-               
             }
         }
          stage('docker login1')
