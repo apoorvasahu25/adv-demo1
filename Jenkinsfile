@@ -9,13 +9,11 @@ pipeline
             {
                 script
                 {
-                    withCredentials([usernamePassword(credentialsId: 'docker-login', usernameVariable: 'ashjd', passwordVariable: 'ashjd@1122000')]) 
-                    {
-                        sh '''
-                            echo "The username is: ${ashjd}"
-                            echo "The password is : ${dckr_pat_Bd34xMJ2z1I24rgENk3kqOV3mDo}"
-                        '''
-                    }
+                    withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'ashPSW', usernameVariable: 'ashUSR')]) {
+                    sh '''
+                            echo "The username is: ${ashPSW}"
+                            echo "The password is : ${ashUSR}"
+                        '''}
                 }
             }            
         }
@@ -33,8 +31,13 @@ pipeline
         {
             steps
             {   
-                sh 'docker login -u ashjd -p dckr_pat_Bd34xMJ2z1I24rgENk3kqOV3mDo'         
-            }
+                script
+                {
+                    withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'ashPSW', usernameVariable: 'ashUSR')]) {
+                        sh 'docker login -u ashPSW -p ashUSR'         
+                    }
+                }
+            }   
         }
         stage('Push image to Hub')
         {
