@@ -13,12 +13,10 @@ pipeline
         stage('docker login')
         {
             steps
-            {   
-                script
+            {
+                withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'ashPSW', usernameVariable: 'ashUSR')]) 
                 {
-                    withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'ashPSW', usernameVariable: 'ashUSR')]) {
-                        sh 'docker login -u ${ashUSR} -p ${ashPSW}'         
-                    }
+                    sh 'docker login -u ${ashUSR} -p ${ashPSW}'         
                 }
             }   
         }
