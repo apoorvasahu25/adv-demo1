@@ -31,7 +31,7 @@ pipeline
         {
             steps
             {
-                sh 'docekr tag gcc ashjd/ashu-jenkins1:gcc'
+                sh 'docker tag gcc ashjd/ashu-jenkins1:gcc'
             }
         }
         stage('Push image to DockerHub')
