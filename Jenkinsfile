@@ -1,7 +1,4 @@
-pipeline 
-{
-    agent any
-    pipeline {
+pipeline {
     agent any
     stages {
         stage('only') {
@@ -20,7 +17,6 @@ pipeline
             }
         }
     }
-}
     stages
     {
         stage('Build Docker Image')
