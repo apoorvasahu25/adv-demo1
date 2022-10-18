@@ -53,7 +53,7 @@ pipeline
         {
             steps
             {
-                sh 'docker rm ashjd/ashu-jenkins1:gcc'
+                sh 'docker rm gcc'
             }
         }
     }
