@@ -23,7 +23,7 @@ pipeline
             {
                script
                {
-                   sh 'echo $a_PSW | docekr login -u $a_USR --password-stdin'
+                   sh 'echo $a_PSW | docker login -u $a_USR --password-stdin'
                    sh 'docker push ashjd/ashu-jenkins1'
                }
             }          
