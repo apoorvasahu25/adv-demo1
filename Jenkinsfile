@@ -1,9 +1,6 @@
 pipeline 
 {
     agent any
-    environment {     
-        secret=credentials('docker-login')     
-} 
     stages
     {
         stage('Build Docker Image')
@@ -16,6 +13,10 @@ pipeline
                 }
             }
         }
+        environment 
+        {     
+            secret=credentials('docker-login')     
+        }    
         stage('docker login')
         {
             steps
