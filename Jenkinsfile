@@ -14,8 +14,6 @@ pipeline
                 script
                 {
                     sh 'docker build -t ashjd/ashu-jenkins1 .'
-                    sh 'echo $credes_USR'
-                    sh 'echo $credes_PSW'
                 }
             }
         }
@@ -25,7 +23,7 @@ pipeline
             {
                script
                {
-                   sh 'docker login -u $credes_USR -p $credes_PSW'
+                   sh 'echo $credes_PSW | docekr login -u $credes_USR --password-stdin'
                    sh 'docker push ashjd/ashu-jenkins1'
                }
             }          
