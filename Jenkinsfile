@@ -9,7 +9,7 @@ pipeline
            {
                 script
                 {
-                    sh 'sudo -S'
+                    sh 'sudo -i'
                     sh 'docker build -t ashjd/ashu-jenkins1 .'
                 }
             }
