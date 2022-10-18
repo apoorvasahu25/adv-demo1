@@ -1,10 +1,6 @@
 pipeline 
 {
     agent any
-    environment {
-        a=credentials( 'Jenkins-docker-login' )
-        
-    }    
     stages
     {
         stage('Build Docker Image')
