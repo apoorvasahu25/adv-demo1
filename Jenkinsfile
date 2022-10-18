@@ -3,29 +3,12 @@ pipeline
     agent any
     stages
     {
-        stage('credes')
-        {
-            steps 
-            {
-                script
-                {
-                    withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'ashPSW', usernameVariable: 'ashUSR')]) {
-                    sh '''
-                            echo "The username is: ${ashPSW}"
-                            echo "The password is : ${ashUSR}"
-                        '''}
-                }
-            }            
-        }
-        stage('Build Docker Image')
+        stage('Build Dockerfile')
         {
            steps
-           {
-                script
-                {
-                    sh 'docker build -t ashjd/ashu-jenkins1 .'
-                }
-            }
+           {              
+                sh 'docker build -t ashjd/ashu-jenkins1 .'
+           }
         }
         stage('docker login')
         {
@@ -49,12 +32,8 @@ pipeline
         stage('Pull image from hub')
         {
             steps
-            {
-                script
-                {
-     
-                    sh 'docker pull ashjd/ashu-jenkins1'
-                }
+            {     
+                sh 'docker pull ashjd/ashu-jenkins1'
             }
         }
         
@@ -62,11 +41,8 @@ pipeline
         {
             steps
             {
-                script
-                {
-                   sh 'docker run -p 8082:80 --name jenkins1 ashjd/ashu-jenkins1'
-                    sh 'docker rm jenkins1'
-                }
+                sh 'docker run -p 8082:80 --name jenkins1 ashjd/ashu-jenkins1'
+                sh 'docker rm jenkins1'
             }
         }
     }
