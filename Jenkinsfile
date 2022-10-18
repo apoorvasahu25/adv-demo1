@@ -1,6 +1,10 @@
 pipeline 
 {
     agent any
+    environment 
+        {     
+            secret=credentials('docker-login')     
+        }   
     stages
     {
         stage('Build Docker Image')
@@ -13,13 +17,9 @@ pipeline
                 }
             }
         }
-        environment 
-        {     
-            secret=credentials('docker-login')     
-        }    
         stage('docker login')
         {
-            steps
+        steps
             {   
                 sh "docker login -u $secret_USR -p $secret_PSW"         
                 sh "echo $secret_PSW | docker login -u $secret_USR --password-stdin"
