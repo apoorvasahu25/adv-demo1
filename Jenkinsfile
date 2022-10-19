@@ -30,7 +30,7 @@ pipeline
             {
                 withCredentials([usernamePassword(credentialsId: 'docker-login', usernameVariable: 'ashUSR', passwordVariable: 'ashPSW')]) 
                 {
-                    sh 'echo ${ashUSR} | docker login -u ${ashPSW} --password-stdin'
+                    sh 'echo ${ashPSW} | docker login -u ${ashUSR} --password-stdin'
 
                 }
             }   
