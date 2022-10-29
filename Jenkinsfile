@@ -8,6 +8,7 @@ pipeline
            steps
            {              
                 sh 'docker build -t gcc .'
+                sh 'echo "ashutosh"'
            }
         }
         stage('Run container')
