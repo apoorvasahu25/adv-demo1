@@ -8,7 +8,6 @@ pipeline
            steps
            {              
                 sh 'docker build -t gcc .'
-                sh 'echo "ashutosh"'
            }
         }
         stage('Run container')
@@ -22,16 +21,16 @@ pipeline
         {
             steps
             {
-                sh 'docker tag gcc ashjd/ashu-jenkins1:gcc'
+                sh 'docker tag gcc apoorvasahu34/jenkins:gcc'
             }
         }
         stage('Docker login')
         {
             steps
             {
-                withCredentials([usernamePassword(credentialsId: 'docker-login', usernameVariable: 'ashUSR', passwordVariable: 'ashPSW')]) 
+                withCredentials([usernamePassword(credentialsId: 'apoorva_git_login', usernameVariable: 'apooUSR', passwordVariable: 'apooPSW')]) 
                 {
-                    sh 'echo ${ashPSW} | docker login -u ${ashUSR} --password-stdin'
+                    sh 'echo ${apooPSW} | docker login -u ${apooUSR} --password-stdin'
 
                 }
             }   
@@ -40,14 +39,14 @@ pipeline
         {
             steps
             {     
-                sh 'docker push ashjd/ashu-jenkins1:gcc'
+                sh 'docker push apoorvasahu34/jenkins'
             }          
         }
         stage('Pull image from DockerHub')
         {
             steps
             {     
-                sh 'docker pull ashjd/ashu-jenkins1:gcc'
+                sh 'docker pull apoorvasahu34/jenkins'
             }
         }
     }
